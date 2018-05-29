@@ -1,2 +1,2 @@
-# past-questions-api
-Jamb/PUME past questions API
+# Past-questions-api
+Provides API endpoints for users/students to get exam past questions for  Jamb/PUME.
