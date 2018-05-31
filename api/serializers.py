@@ -1,7 +1,12 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
+from core.models.past_question import (
+    PastQuestion, School, Rating, Review, History
+)
+
 User = get_user_model()
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,3 +25,33 @@ class UserSerializer(serializers.ModelSerializer):
             user.is_active = True
             user.save(**kwargs)
         return user
+
+
+class PastQuestionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PastQuestion
+        fields = '__all__'
+
+
+class SchoolSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = School
+        fields = '__all__'
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
+
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = '__all__'
+
+
+class HistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = History
+        fields = '__all__'
