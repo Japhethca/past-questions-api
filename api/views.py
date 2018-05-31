@@ -13,10 +13,10 @@ from .utils import generate_token, decode_token
 
 class UserSignup(views.APIView):
     http_method_names = ('post', 'get')
+    permission_classes = []
+    authentication_classes = []
 
     def post(self, request):
-        print(self.get_authenticators(), '>>>>>>>>')
-        print(request.user)
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -25,16 +25,6 @@ class UserSignup(views.APIView):
             'message': 'User successfully created',
             'data': serializer.data
         })
-
-    def get(self, request):
-        serializer = UserSerializer(User.objects.all(), many=True)
-        if request.user.is_authenticated:
-            return Response({
-                'data': serializer.data
-            })
-        return Response({
-            'message': 'User does not have permission to view this page'
-        }, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['post'])
@@ -49,7 +39,7 @@ def user_auth(request):
         except User.DoesNotExist:
             return Response(
                 {
-                    'error': 'Unable to generate token with supplied credentials'
+                    'error': 'Unable to generate token with supplied credentials. Email/Password is invalid'
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
@@ -64,3 +54,10 @@ def user_auth(request):
     )
 
 
+@api_view(['get'])
+@authentication_classes([])
+@permission_classes([])
+def api_index(request):
+    return Response({
+        'message': 'Welcome to past questions API'
+    })
