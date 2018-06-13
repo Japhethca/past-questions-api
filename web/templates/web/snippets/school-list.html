@@ -1,0 +1,16 @@
+{% load static %}
+
+<div class="container c-list pt-5 pb-5">
+  <h4 class="c-list__title c-list__title--brown text-center">Schools</h4>
+  <hr>
+  <ul class="row pl-0">
+    {% for school in schools %}
+      <li class="col-sm-6 row c-list__item">
+        <a href="{% url 'past-question' %}?school={{ school.name|slugify }}" style="width: 100%;">
+          <img src="{% static 'web/images/card.jpg' %}" alt="" class="col-sm-4">
+          <h5 class="col-sm-8 c-list__item__title" style="display: inline;">{{ school.name }}</h5>
+        </a>
+      </li>
+    {% endfor%}
+  </ul>
+</div>

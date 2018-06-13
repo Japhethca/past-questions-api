@@ -1,0 +1,14 @@
+{% extends 'web/layout/base-index-template.html' %}
+{% block title %} Search results {% endblock %}
+
+{% block content %}
+  <div class="search container content--bg-color p-3">
+    <h2 class="c-list__title--brown">({{ object_list| length }}) Search result(s)</h2>
+    {% if object_list %}
+      {% include 'web/snippets/pq-list.html' with past_questions=object_list %}
+    {% else %}
+      <p>Could not find what your were looking for</p>
+    {% endif %}
+  </div>
+
+{% endblock %}

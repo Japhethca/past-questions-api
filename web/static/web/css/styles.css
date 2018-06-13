@@ -1,0 +1,278 @@
+body {
+    position: relative;
+    background-color: #F4F4F4;
+}
+
+.pq-container-fluid {
+    width: 100%;
+    height: auto;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.pq-container {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.content--bg-color {
+    background-color: #ffffff;
+}
+
+.home__schools--bg {
+    background-color: #ffffff;
+}
+
+/* main navigation */
+.pq-nav-wrapper {
+    background-color: #222222;
+
+}
+
+.pq-nav {
+    display: flex;
+    height: 4rem;
+    align-items: center;
+}
+
+.pq-site-brand {
+    font-size: 20pt;
+    padding-right: 20px;
+}
+
+.pq-site-brand a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    height: 100%;
+    text-blink: 1;
+}
+
+.pq-nav-menu {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 0;
+    /*margin-left: auto;*/
+}
+
+.pq-nav-item {
+    /*margin: 1px;*/
+}
+
+.pq-nav-item a {
+    padding: 10px;
+    text-decoration: none;
+    color: darkgrey;
+    font-size: larger;
+}
+
+.pq-nav-item a:hover {
+    color: #ffff;
+}
+
+.pq-nav-search {
+    margin-right: auto;
+    /*margin-left: auto;*/
+}
+
+.pq-nav-search input {
+    outline: 0;
+    width: 35rem;
+    padding-left: 10px;
+    border-radius: 4px;
+    border: 0;
+    line-height: 2;
+    font-size: 15pt;
+    color: #2222;
+    /*opacity: 0.4;*/
+}
+
+.pq-nav-search input:focus {
+    /*opacity: .9;*/
+}
+
+.pq-nav-search input[placeholder] {
+    color: #222;
+}
+
+/* home navigation */
+.pq-home-nav {
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    height: 25rem;
+    padding-top: 20px;
+}
+
+.pq-home-nav .pq-nav-menu {
+    /*width: 100%;*/
+    justify-content: flex-end;
+}
+
+.pq-home-title {
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 60pt;
+    word-spacing: 20px;
+    letter-spacing: 4px;
+    margin-top: 3rem;
+}
+
+.pq-home-subtitle {
+    color: darkgray;
+    font-size: 20pt;
+}
+
+.pq-home-title, .pq-home-subtitle {
+    text-align: center;
+}
+
+.pq-home-search {
+    display: flex;
+    justify-content: center;
+}
+
+.pq-home-search input {
+    outline: 0;
+    padding-left: 10px;
+    border-radius: 3px;
+    font-size: 20pt;
+    line-height: 2.5;
+    border: 0;
+    width: 50%;
+    opacity: 0.5;
+}
+
+.pq-home-search input:focus {
+    opacity: .8;
+}
+
+.wrapper {
+    margin-top: 40px;
+    /*background-color: #e0eafc;*/
+}
+
+.pq-list .items {
+    padding-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pq-list .list-title {
+    padding: 20px 10px 5px 0;
+    font-size: 30pt;
+    text-align: center;
+}
+
+.pq-card {
+    margin-bottom: 20px;
+    /*display: flex;*/
+    /*flex-flow: column;*/
+    /*align-items: center;*/
+    /*background-color: gainsboro;*/
+}
+
+.pq-card .pq-detail {
+    display: flex;
+    flex-flow: column;
+}
+
+.pq-card .pq-image {
+    height: 10rem;
+    padding: 5px;
+    border: 1px solid gray;
+}
+
+.pq-card .pq-title {
+    text-transform: capitalize;
+
+}
+
+/*Sidebar styles*/
+.c-sidebar {
+    padding-left: 40px;
+}
+
+.c-sidebar__section {
+    background-color: #ffffff;
+    padding: .6rem;
+    margin-bottom: 2rem;
+}
+
+.c-sidebar__list {
+
+}
+
+.c-sidebar__title {
+    color: #5A3919;
+    text-transform: capitalize;
+}
+
+.c-sidebar__link {
+    color: #5A3919;
+}
+
+.c-sidebar__link:hover {
+    color: #D79235;
+    text-decoration: none;
+}
+
+.c-sidebar__list__item {
+    padding: 0.3rem 0;
+    transition: padding-left 400ms;
+}
+
+.c-sidebar__list__item:hover {
+    padding-left: .6rem;
+}
+
+
+.site-footer {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+    background-color: gray;
+    bottom: 0;
+}
+
+/* Past question single view styles */
+.c-list {
+    margin-top: 2rem;
+}
+
+.c-list__title {
+    font-size: 30pt;
+    margin-bottom: 1.2rem;
+}
+
+.c-list__title--brown {
+    color: #5A3919;
+}
+
+.c-list__item {
+    margin-top: 0.6rem;
+}
+
+.c-list__item__title {
+    font-size: 1.2rem;
+    padding: .6rem 0;
+    color: #D79235;
+}
+
+.c-list__item__title:hover{
+    color: #5A3919;
+    text-decoration: none;
+}
+
+.u-badge {
+    padding: 5px;
+    background-color: darkblue;
+    color: #ffff;
+    border-radius: 10px;
+}

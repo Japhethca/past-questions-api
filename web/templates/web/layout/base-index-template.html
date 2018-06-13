@@ -1,0 +1,17 @@
+{% extends 'web/layout/base.html' %}
+
+{% block container %}
+  <div class="pq-container">
+    <div class="wrapper row">
+      <div class="main-content col-sm-8">
+         {% block content %}
+         {% endblock content %}
+      </div>
+     <div class="sidebar col-sm-4">
+       {% block sidebar %}
+         {% include 'web/includes/sidebar.html' %}
+       {% endblock %}
+     </div>
+    </div>
+  </div>
+{% endblock %}

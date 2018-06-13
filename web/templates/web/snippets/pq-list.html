@@ -1,0 +1,11 @@
+<div class="container c-list">
+  <h4 class="c-list__title c-list__title--brown text-center">{{ pq_list_title }}</h4>
+  <hr>
+  <div class="row">
+    {% for pq in past_questions %}
+       <div class="col-sm-4">
+         {% include 'web/snippets/pq-card.html' with pq=pq %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

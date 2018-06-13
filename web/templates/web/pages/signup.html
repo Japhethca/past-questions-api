@@ -1,0 +1,20 @@
+{% extends "web/layout/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'web/css/auth-styles.css' %}">
+{% endblock %}
+
+{% block container %}
+  <form class="auth-form" method="POST", action="{% url 'signup' %}">
+      <h4 class="title">Signup Page</h4>
+      {% csrf_token %}
+      {% include "web/snippets/form_snippet.html"  with form=form %}
+      <button type="submit" class="bg-success text-white">Sign up</button>
+  </form>
+
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}

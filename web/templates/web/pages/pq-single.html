@@ -1,0 +1,56 @@
+{% extends "web/layout/base-index-template.html" %}
+{% load static %}
+
+{% block title %} {{ pq.subject_name }} {% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'web/css/pq-single.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="pq-detail content--bg-color">
+    <h5 class="pq-title">{{ pq.title }} | {{ pq.school }}</h5>
+    <p class="pq-description">{{ pq.description }}</p>
+
+    <div class="pq-subjects">
+      Subjects in past question:
+      {% for subject in pq.subjects.all %}
+        <span class="u-badge">{{ subject.name }}</span>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+        <button class="btn btn-info">Past Question Preview</button>
+    </div>
+    <div class="text-center mt-3">
+        <button class="btn btn-success">Buy Past Question</button>
+    </div>
+
+    <div class="pq-reviews">
+      <h5 class="review-header">Reviews</h5>
+      {% if not pq_reviews %}
+        <p>no review for this past question</p>
+      {% else %}
+        {% for review in pq_reviews %}
+          <div class="review-box">
+            <div class="review-user">{{ review.user.first_name| first}}</div>
+            <div class="review-comment">
+              <div class="meta">{{ review.user.first_name }} | {{ review.created_at | timesince }} ago</div>
+              <p>{{ review.comment }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if request.user.is_authenticated %}
+         <form class="new-review" action="{% url 'past-question' pq.title|slugify %}" method="POST">
+            {% csrf_token %}
+            {{ review_form.as_p }}
+            <button type="submit">Post Review</button>
+         </form>
+        {% else %}
+          You need to <a href="{% url 'login' %}">login</a> to add reviews
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}
