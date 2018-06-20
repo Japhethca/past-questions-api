@@ -1,41 +1,47 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, **kwargs):
-        if not email:
-            raise ValueError('User must have an email address')
-        user = self.model(
-            email=self.normalize_email(email),
-            **kwargs
-        )
+    def _createuser(self, **fields):
+        email = fields.pop('email')
+        password = fields.get('password')
+        first_name = fields.get('first_name')
+        last_name = fields.get('last_name')
 
-        user.set_password(kwargs.get('password'))
-        user.is_active = True
+        if email is None:
+            raise ValueError('Email must not be null')
+        if not first_name and not last_name:
+            raise ValueError('Firstname and lastname must not be null')
+
+        email = self.normalize_email(email=email)
+        user = self.model(email=email, **fields)
+        user.set_password(raw_password=password)
+
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, **kwargs):
-        print(kwargs)
-        user = self.create_user(**kwargs)
+    def create_user(self, **fields):
+        fields.setdefault('is_superuser', False)
+        fields.setdefault('is_superuser', False)
+        return self._createuser(**fields)
 
-        user.is_admin = True
-        user.save(using=self._db)
-        return user
+    def create_superuser(self, **fields):
+        fields.setdefault('is_superuser', True)
+        fields.setdefault('is_staff', True)
+        return self._createuser(**fields)
 
 
-class User(AbstractBaseUser):
-    first_name = models.CharField(max_length=300)
-    last_name = models.CharField(max_length=300)
-    email = models.EmailField(max_length=300, unique=True, null=False, blank=False)
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now=True, editable=False)
-    updated_at = models.DateTimeField(auto_now_add=True, editable=False)
+class User(AbstractUser):
+    username = None
+    first_name = models.CharField(max_length=300, null=True)
+    last_name = models.CharField(max_length=300, null=True)
+    email = models.CharField(max_length=300, unique=True, null=False, blank=False)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ('first_name', 'last_name')
+    REQUIRED_FIELDS = ['first_name', 'last_name']
     objects = UserManager()
 
     def __str__(self):

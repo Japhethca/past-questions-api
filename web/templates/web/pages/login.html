@@ -1,0 +1,18 @@
+{% extends "web/layout/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'web/css/auth-styles.css' %}">
+{% endblock %}
+
+{% block container %}
+    <form class="auth-form mx-auto" action='{% url 'login' %}' method="POST"> {% csrf_token %}
+        <h4 class="title">Login page</h4>
+        {% for error in login_error %}
+          {{ error }}
+        {% endfor %}
+        {% include "web/snippets/form_snippet.html" with form=form %}
+        <button type="submit" class="bg-info text-white">Log In</button>
+  </form>
+
+{% endblock %}

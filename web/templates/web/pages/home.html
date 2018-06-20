@@ -1,0 +1,15 @@
+{% extends "web/layout/base.html" %}
+
+{% block nav %}
+  {% include 'web/includes/home-nav.html' %}
+{% endblock %}
+
+{% block container %}
+    {% include 'web/snippets/pq-list.html' with past_questions=past_questions pq_list_title='Latest past Questions' %}
+  <div class="home__schools--bg">
+    {% include 'web/snippets/school-list.html' %}
+  </div>
+{% endblock %}
+
+
+

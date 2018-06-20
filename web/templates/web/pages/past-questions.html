@@ -1,0 +1,19 @@
+{% extends 'web/layout/base-index-template.html' %}
+{% block title %}
+  {% if query_title %}
+    {{ query_title }}
+  {% else %}
+    Past Questions
+  {% endif %}
+ {% endblock %}
+
+{% block content %}
+  <div class="past-question-list container content--bg-color p-3">
+    <h2 class="c-list__title--brown">Past Questions {% if query_title %} for: {{ query_title }} {% endif %}  </h2>
+    {% if object_list %}
+      {% include 'web/snippets/pq-list.html' with past_questions=object_list %}
+    {% else %}
+      <p>Seems there are no past questions for this school/subject</p>
+    {% endif %}
+  </div>
+{% endblock %}

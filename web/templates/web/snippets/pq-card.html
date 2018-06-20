@@ -1,0 +1,8 @@
+{% load staticfiles  %}
+
+<div class="text-center pq-card">
+  <img src="{%  static 'web/images/card.jpg' %}" alt="" class="img-fluid rounded-top">
+  <div class="pq-detail">
+    <a class="pq-title c-list__item__title" href="{% url 'past-question' pq.title|slugify %}">{{ pq.title }}</a>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<nav class="pq-container pq-nav ">
+  <div class="pq-site-brand">
+    <a href="{% url 'home' %}">Past QA</a>
+  </div>
+  <form action="/search" method="get" class="pq-nav-search">
+    <input
+      type="text"
+      placeholder="search for school or subject"
+      name="q"
+      value="{{ request.GET.q }}"
+    />
+  </form>
+  <ul class="pq-nav-menu">
+    {% if request.user.is_authenticated %}
+      <li class="pq-nav-item"><a href="#">{{ request.user.email }}</a></li>
+      <li class="pq-nav-item"><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+      <li class="pq-nav-item"><a href="{% url 'login' %}">Login</a></li>
+      <li class="pq-nav-item"><a href="{% url 'signup' %}">Signup</a></li>
+    {% endif %}
+  </ul>
+</nav>

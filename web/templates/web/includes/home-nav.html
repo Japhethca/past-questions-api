@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<nav class="pq-home-nav" style="background-image: url('{% static 'web/images/still-life-school-retro-ink-159618.jpeg' %}')">
+  <ul class="pq-nav-menu">
+    <li class="pq-nav-item"> <a href="{% url 'about' %}">About Us</a></li>
+    <li class="pq-nav-item"> <a href="{% url 'contact' %}">Contact Us</a></li>
+    {% if request.user.is_authenticated %}
+      <li class="pq-nav-item"><a href="#">{{ request.user.email }}</a></li>
+      <li class="pq-nav-item"><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+      <li class="pq-nav-item"><a href="{% url 'login' %}">Login</a></li>
+      <li class="pq-nav-item"><a href="{% url 'signup' %}">Signup</a></li>
+    {% endif %}
+  </ul>
+  <div class="home-title">
+      <h2 class="pq-home-title">Past QA</h2>
+      <p class="pq-home-subtitle">The best place to get your past questions</p>
+  </div>
+  <form action="/search" method="get" class="pq-home-search">
+    <input
+      type="text"
+      placeholder="Search for school or subject"
+      name="q"
+    />
+  </form>
+</nav>
